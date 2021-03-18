@@ -18,7 +18,8 @@
   "homepage": "https://github.com/jefo3/Compra-de-passagem#readme",
   "keywords": [],
   "dependencies": {
-    "node-modules": "^1.0.1"
+    "node-modules": "^1.0.1",
+    "pg": "^8.5.1"
   },
   "devDependencies": {
     "express": "^4.17.1"
