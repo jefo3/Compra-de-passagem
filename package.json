@@ -1,0 +1,26 @@
+{
+  "name": "compra-de-passagem",
+  "version": "1.0.0",
+  "description": "Trabalho da cadeira de FBD",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jefo3/Compra-de-passagem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jefo3/Compra-de-passagem/issues"
+  },
+  "homepage": "https://github.com/jefo3/Compra-de-passagem#readme",
+  "keywords": [],
+  "dependencies": {
+    "node-modules": "^1.0.1"
+  },
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}
