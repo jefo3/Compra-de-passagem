@@ -5,7 +5,7 @@ const nomeTabela = 'Funcionario'
 module.exports = {
 
     async exibirFuncionario(request, response){
-        const query = `SELECT * FROM ${nomeTabela};`
+        const query = `SELECT cpf, nome, email, TO_CHAR(dataNasc, 'YYYY-MM-DD') AS dataNasc, login, senha FROM ${nomeTabela};`
     
         await connection.query(query)
             .then(res => {
@@ -37,7 +37,20 @@ module.exports = {
     },
 
     async atualizaFuncionario(request, response){
+        const {id} = request.params
+        const {cpf, nome, email, dataNasc, login, senha} = request.body
 
+        console.log(cpf, nome, email, dataNasc, login, senha)
+        const query  = `UPDATE ${nomeTabela} 
+                        SET(cpf, nome, email, dataNasc, login, senha) 
+                        = ('${cpf}', '${nome}', '${email}', '${dataNasc}', '${login}', '${senha}') 
+                        WHERE cpf = '${id}'`
+
+        await connection.query(query).then(
+            response.send("Atualizado COM SUCESSO")
+        ).catch(err => {
+            console.log(err)
+        })
     },
 
     async deletaFuncionario(request, response){

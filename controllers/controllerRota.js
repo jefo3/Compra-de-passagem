@@ -23,7 +23,7 @@ module.exports = {
     },
 
     async exibirRotas(request, response){
-        const query = `SELECT * FROM ${nomeTabela};`
+        const query = `SELECT idRota, tempoViagem, TO_CHAR(dataHoraViagem, 'YYYY-MM-DD HH24:MI:SS') AS dataHoraViagem, idOnibus, origem, destino FROM ${nomeTabela};`
     
         await connection.query(query)
             .then(res => {
@@ -42,7 +42,20 @@ module.exports = {
     },
 
     async atualizaRota(request, response){
+        const {id} = request.params
+        const {tempoViagem, dataHoraViagem, idOnibus, origem, destino} = request.body
 
+        
+        const query  = `UPDATE ${nomeTabela} 
+                        SET(tempoViagem, dataHoraViagem, idOnibus, origem, destino) 
+                        = ('${tempoViagem}', '${dataHoraViagem}', '${idOnibus}', '${origem}', '${destino}') 
+                        WHERE idRota = '${id}'`
+
+        await connection.query(query).then(
+            response.send("Atualizado COM SUCESSO")
+        ).catch(err => {
+            console.log(err)
+        })
     },
 
     async deletaRota(request, response){
