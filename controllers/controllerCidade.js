@@ -34,5 +34,18 @@ module.exports = {
         }).catch(err=>{
             console.log(err)
         })
-    }
+    },
+
+    //remove se a cidade não estiver na rota(nem como cidade de origem nem como destino)
+    async deletaCidade(request, response){
+        const {id} = request.params
+
+        const query  = `DELETE FROM ${nomeTabela} WHERE idCidade = ${id}`
+
+        await connection.query(query).then(
+            response.send("REMOVIDO COM SUCESSO")
+        ).catch(err => {
+            console.log(err)
+        })
+    },
 }
