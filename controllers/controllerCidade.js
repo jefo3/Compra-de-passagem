@@ -29,7 +29,7 @@ module.exports = {
 
         const query = `INSERT INTO Cidade(nome, estado) VALUES('${nome}', '${estado}');`
 
-        connection.query(query).then(res =>{
+        await connection.query(query).then(res =>{
             response.send("cidade adicionada")
         }).catch(err=>{
             console.log(err)
