@@ -1,0 +1,67 @@
+const connection = require('../database/connection')
+
+const nomeTabela = 'Onibus'
+
+module.exports = {
+
+    async addOnibus(request, response){
+
+        const {capacidade, tipo} = await request.body;
+    
+        const query = `INSERT INTO ${nomeTabela}(capacidade, tipo) values(${capacidade}, '${tipo}');`
+    
+        await connection.query(query)
+            .then(res => {
+                console.log("Onibus cadastrado")   
+            })
+            .catch(err => {
+                console.log(err)
+            });
+            
+        //chamar querry q vai criar as poltronas vai chamar a function
+        //do banco que recebe o id do onibus e a capacidade
+        const queryCriaPoltrona = `SELECT cria_poltrona(idOnibus, capacidade) FROM ${nomeTabela} WHERE idOnibus = (SELECT MAX(idOnibus) FROM ${nomeTabela});`
+    
+        await connection.query(queryCriaPoltrona)
+            .then(res => {
+                
+                console.log("Poltronas cadastradas")
+                
+            })
+            .catch(err => {
+                console.log(err);
+            });
+            
+            response.send("onibus criado")
+    
+    },
+
+    async exibiOnibus(request, response){
+        const query = `SELECT * FROM ${nomeTabela};`
+    
+        await connection.query(query)
+            .then(res => {
+                const rows = res.rows;
+    
+                rows.map(row => {
+                    console.log(`Read: ${JSON.stringify(row)}`);
+                });
+                
+                response.send(JSON.stringify(rows))
+                
+            })
+            .catch(err => {
+                console.log(err);
+            });
+            
+    },
+
+    async deletaOnibus(request, response){
+        
+    }
+
+   
+
+    
+
+}
