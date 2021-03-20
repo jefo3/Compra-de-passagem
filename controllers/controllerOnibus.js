@@ -20,7 +20,7 @@ module.exports = {
             
         //chamar querry q vai criar as poltronas vai chamar a function
         //do banco que recebe o id do onibus e a capacidade
-        const queryCriaPoltrona = `SELECT cria_poltrona(idOnibus, capacidade) FROM ${nomeTabela} WHERE idOnibus = (SELECT MAX(idOnibus) FROM ${nomeTabela});`
+        const queryCriaPoltrona = `SELECT cria_poltrona(idOnibus, vazia, capacidade) FROM ${nomeTabela} WHERE idOnibus = (SELECT MAX(idOnibus) FROM ${nomeTabela});`
     
         await connection.query(queryCriaPoltrona)
             .then(res => {
