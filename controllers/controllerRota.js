@@ -46,7 +46,15 @@ module.exports = {
     },
 
     async deletaRota(request, response){
+        const {id} = request.params
 
+        const query  = `DELETE FROM ${nomeTabela} WHERE idRota = ${id}`
+
+        await connection.query(query).then(
+            response.send("REMOVIDO COM SUCESSO")
+        ).catch(err => {
+            console.log(err)
+        })
     },
 
 }

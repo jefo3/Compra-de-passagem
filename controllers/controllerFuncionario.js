@@ -41,8 +41,16 @@ module.exports = {
     },
 
     async deletaFuncionario(request, response){
-        
-    }
+        const {id} = request.params
+
+        const query  = `DELETE FROM ${nomeTabela} WHERE cpf = '${id}'`
+
+        await connection.query(query).then(
+            response.send("REMOVIDO COM SUCESSO")
+        ).catch(err => {
+            console.log(err)
+        })
+    },
 
 
 }

@@ -57,11 +57,25 @@ module.exports = {
     },
 
     async deletaOnibus(request, response){
+        //para deletar o onibus vamos deletar todas as poltronas associadas a esse onibus
+        const {id} = request.params
+        const nomeTabelaPoltrona = 'poltrona'
+
+        const queryPoltrona  = `DELETE FROM ${nomeTabelaPoltrona} WHERE idOnibus = ${id}`
+        const query  = `DELETE FROM ${nomeTabela} WHERE idOnibus = ${id}`
+
+        await connection.query(queryPoltrona).then(
+            response.send(" POLTRONA REMOVIDO COM SUCESSO")
+        ).catch(err => {
+            console.log(err)
+        })
+
+        await connection.query(query).then(
+            response.send("ONIBUS REMOVIDO COM SUCESSO")
+        ).catch(err => {
+            console.log(err)
+        })
         
     }
-
-   
-
-    
 
 }
