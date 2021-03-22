@@ -32,11 +32,15 @@ module.exports = {
                 console.log(err);
             });
             
-            response.send("onibus criado")
+            //response.send("onibus criado")
+            response.render('onibus', {
+                style: 'crud.css',
+                script: ['onibus.js', 'script.js']
+            })
     
     },
 
-    async exibiOnibus(request, response){
+    async exibirOnibus(request, response){
         const query = `SELECT * FROM ${nomeTabela};`
     
         await connection.query(query)
@@ -47,7 +51,12 @@ module.exports = {
                     console.log(`Read: ${JSON.stringify(row)}`);
                 });
                 
-                response.send(JSON.stringify(rows))
+                //response.send(JSON.stringify(rows))
+                response.render('onibus', {
+                    style: 'crud.css',
+                    script: ['onibus.js', 'script.js'],
+                    rows
+                })
                 
             })
             .catch(err => {

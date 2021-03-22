@@ -1,0 +1,94 @@
+<header>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">
+                <h3>Sistema de Passagens de Ônibus</h3>
+            </a>
+        </li>
+        <div class="container-voltar">
+            <li class="nav-item">
+                <a href="/" class="nav-link btn btn-danger">Voltar</a>
+            </li>
+        </div>
+    </ul>
+</header>
+
+
+
+<div class="menu-insercao container">
+    <form class="form-inline" action="/addFuncionario" method="POST">
+        <div class="form-group">
+            <input class="form-control" name="cpf" type="text" placeholder="CPF" autocomplete="off"
+                maxlength="40">
+            <input class="form-control" name="nome" type="text" placeholder="Nome" autocomplete="off"
+                maxlength="40">
+            <input class="form-control" name="email" type="email" placeholder="Email" autocomplete="off"
+                maxlength="40">
+            <input class="form-control" name="datanasc" type="date" autocomplete="off">
+            <input class="form-control" name="login" type="text" placeholder="Login" autocomplete="off"
+                maxlength="40">
+                <input class="form-control" name="senha" type="text" placeholder="Senha" autocomplete="off"
+                maxlength="40">
+
+        </div>
+        <button class="btn btn-primary" type="submit">Adicionar</button>
+    </form>
+</div>
+
+<div class="menu-buscar container">
+    <form class="form-inline" action="/buscar" method="POST">
+        <div class="form-group">
+            <select class="form-control selectBusca" name="tipoBusca">
+                <option value="descricao">CPF</option>
+                <option value="valor">Nome</option>
+            </select>
+            <input class="form-control inputBusca" name="valorBusca" type="text" step="0.01" autocomplete="off">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="tab-content container" id="nav-tabContent">
+    <div class="tab-pane fade show active container" id="nav-items" role="tabpanel" aria-labelledby="nav-items-tab">
+        <div class="container">
+            <div class="card tabela">
+                <div class="card-header">
+                    <h3 class="card-title">Tabela Funcionarios</h3>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>CPF</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Data de Nascimento</th>
+                            <th>Login</th>
+                            <th>Senha</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each rows}}
+                        <tr identificador={{cpf}}>
+                            <td class="rowData" contenteditable="false">{{cpf}}</td>
+                            <td class="rowData" contenteditable="false">{{nome}}</td>
+                            <td class="rowData" contenteditable="false">{{email}}</td>
+                            <td class="rowData" contenteditable="false">{{datanasc}}</td>
+                            <td class="rowData" contenteditable="false">{{login}}</td>
+                            <td class="rowData" contenteditable="false">{{senha}}</td>
+                            <td id="actions">
+                                <a class="add" title="Add" data-toggle="tooltip"><i
+                                        class="material-icons">&#xE03B;</i></a>
+                                <a class="edit" title="Edit" data-toggle="tooltip"><i
+                                        class="material-icons">&#xE254;</i></a>
+                                <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                        class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>

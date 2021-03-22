@@ -1,0 +1,78 @@
+<header>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">
+                <h3>Sistema de Passagens de Ônibus</h3>
+            </a>
+        </li>
+        <div class="container-voltar">
+            <li class="nav-item">
+                <a href="/" class="nav-link btn btn-danger">Voltar</a>
+            </li>
+        </div>
+    </ul>
+</header>
+
+
+
+<div class="menu-insercao container">
+    <form class="form-inline" action="/addOnibus" method="POST">
+        <div class="form-group">
+            <input class="form-control" name="capacidade" type="number" placeholder="Capacidade" autocomplete="off"
+                maxlength="40">
+            <input class="form-control" name="tipo" type="text" placeholder="Tipo" autocomplete="off"
+                maxlength="40">
+
+        </div>
+        <button class="btn btn-primary" type="submit">Adicionar</button>
+    </form>
+</div>
+
+<div class="menu-buscar container">
+    <form class="form-inline" action="/buscar" method="POST">
+        <div class="form-group">
+            <select class="form-control selectBusca" name="tipoBusca">
+                <option value="descricao">Capacidade</option>
+                <option value="valor">Tipo</option>
+            </select>
+            <input class="form-control inputBusca" name="valorBusca" type="text" step="0.01" autocomplete="off">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="tab-content container" id="nav-tabContent">
+    <div class="tab-pane fade show active container" id="nav-items" role="tabpanel" aria-labelledby="nav-items-tab">
+        <div class="container">
+            <div class="card tabela">
+                <div class="card-header">
+                    <h3 class="card-title">Tabela Ônibus</h3>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Capacidade</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each rows}}
+                        <tr identificador={{idonibus}}>
+                            <td class="rowData" contenteditable="false">{{capacidade}}</td>
+                            <td class="rowData" contenteditable="false">{{tipo}}</td>
+                            <td id="actions">
+                                <a class="add" title="Add" data-toggle="tooltip"><i
+                                        class="material-icons">&#xE03B;</i></a>
+                                <a class="edit" title="Edit" data-toggle="tooltip"><i
+                                        class="material-icons">&#xE254;</i></a>
+                                <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                        class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>

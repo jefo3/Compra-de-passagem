@@ -33,7 +33,12 @@ module.exports = {
                     console.log(`Read: ${JSON.stringify(row)}`);
                 });
                 
-                response.send(JSON.stringify(rows))
+                //response.send(JSON.stringify(rows))
+                response.render('rotas', {
+                    style: 'crud.css',
+                    script: ['rotas.js', 'script.js'],
+                    rows
+                })
                 
             })
             .catch(err => {

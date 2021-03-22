@@ -14,7 +14,12 @@ module.exports = {
                 rows.map(row => {
                     console.log(`Read: ${JSON.stringify(row)}`);
                 });
-                response.send(JSON.stringify(rows))
+                //response.send(JSON.stringify(rows))
+                response.render('funcionario', {
+                    style: 'crud.css',
+                    script: ['funcionario.js', 'script.js'],
+                    rows
+                })
                 
             })
             .catch(err => {
@@ -30,7 +35,12 @@ module.exports = {
                         VALUES('${cpf}', '${nome}','${email}', '${dataNasc}', '${login}', '${senha}');`
 
         await connection.query(query).then(res =>{
-            response.send("funcionario adicionada")
+            //response.send("funcionario adicionada")
+            response.render('funcionario', {
+                style: 'crud.css',
+                script: ['funcionario.js', 'script.js'],
+                rows
+            })
         }).catch(err=>{
             console.log(err)
         })
@@ -47,7 +57,8 @@ module.exports = {
                         WHERE cpf = '${id}'`
 
         await connection.query(query).then(
-            response.send("Atualizado COM SUCESSO")
+            //response.send("Atualizado COM SUCESSO")
+            response.status(200).send()
         ).catch(err => {
             console.log(err)
         })

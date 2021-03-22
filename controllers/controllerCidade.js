@@ -14,7 +14,12 @@ module.exports = {
                 rows.map(row => {
                     console.log(`Read: ${JSON.stringify(row)}`);
                 });
-                response.send(JSON.stringify(rows))
+                //response.send(JSON.stringify(rows))
+                response.render('cidade', {
+                    style: 'crud.css',
+                    script: ['cidade.js', 'script.js'],
+                    rows
+                })
                 
             })
             .catch(err => {
@@ -30,7 +35,8 @@ module.exports = {
         const query = `INSERT INTO Cidade(nome, estado) VALUES('${nome}', '${estado}');`
 
         await connection.query(query).then(res =>{
-            response.send("cidade adicionada")
+            //response.send("cidade adicionada")
+            response.redirect('/cidade')
         }).catch(err=>{
             console.log(err)
         })
