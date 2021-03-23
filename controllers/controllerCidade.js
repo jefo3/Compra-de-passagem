@@ -4,6 +4,32 @@ const nomeTabela = 'Cidade'
 
 module.exports = {
 
+    async buscar(request, response){
+
+        const {nome, estado} = request.body
+        
+        const query = `SELECT * FROM ${nomeTabela} WHERE nome = ${nome} OR estado = ${estado};`
+    
+        await connection.query(query)
+            .then(res => {
+                const rows = res.rows;
+    
+                rows.map(row => {
+                    console.log(`Read: ${JSON.stringify(row)}`);
+                });
+                //response.send(JSON.stringify(rows))
+                response.render('telaResultadoBusca', {
+                    style: 'crud.css',
+                    script: ['cidade.js', 'script.js'],
+                    rows
+                })
+                
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    },
+
     async exibirCidade(request, response){
         const query = `SELECT * FROM ${nomeTabela};`
     
@@ -56,4 +82,5 @@ module.exports = {
             response.send(err)
         })
     },
+
 }
