@@ -10,11 +10,13 @@ deleteBtn.forEach((del)=>{
         // retorna o id da tag <tr>
         const id = del.parentElement.parentElement.getAttribute('identificador') 
         deletarRegistro(id)
-        location.reload()
+
+        setTimeout(function(){ location.reload(); }, 1000);
     }
 })
 
 function deletarRegistro(id){
     fetch(`/delOnibus/${id}`,{
         method: 'DELETE'});
+
 }

@@ -23,7 +23,7 @@ app.engine('handlebars', expressHandlebars({
 app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'))
 
-// Conf body-parser
+//conf para receber entender json
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 

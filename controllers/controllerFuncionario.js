@@ -30,19 +30,18 @@ module.exports = {
     async addFuncionario(request, response){
         const {cpf, nome, email, dataNasc, login, senha} = request.body
 
-        
+       
         const query = `INSERT INTO Funcionario(cpf, nome, email, dataNasc, login, senha)
                         VALUES('${cpf}', '${nome}','${email}', '${dataNasc}', '${login}', '${senha}');`
 
         await connection.query(query).then(res =>{
             //response.send("funcionario adicionada")
-            response.render('funcionario', {
-                style: 'crud.css',
-                script: ['funcionario.js', 'script.js'],
-                rows
-            })
+            response.redirect('/funcionario')
         }).catch(err=>{
-            console.log(err)
+            response.send({    
+                err: 'Error',
+                message: err.message    
+           })    
         })
     },
 
@@ -60,7 +59,10 @@ module.exports = {
             //response.send("Atualizado COM SUCESSO")
             response.status(200).send()
         ).catch(err => {
-            console.log(err)
+            response.send({    
+                err: 'Error',
+                message: err.message    
+           })   
         })
     },
 
@@ -72,7 +74,10 @@ module.exports = {
         await connection.query(query).then(
             response.send("REMOVIDO COM SUCESSO")
         ).catch(err => {
-            console.log(err)
+            response.send({    
+                err: 'Error',
+                message: err.message    
+           })   
         })
     },
 

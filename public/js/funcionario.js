@@ -26,7 +26,7 @@ editBtn.forEach((edit)=>{
 
             // Pegando os valores das linhas
             const obj = {
-                descricao: trChilds[0].innerHTML,
+                cpf: trChilds[0].innerHTML,
                 nome: trChilds[1].innerHTML,
                 email: trChilds[2].innerHTML,
                 dataNasc: trChilds[3].innerHTML,
@@ -51,7 +51,7 @@ editBtn.forEach((edit)=>{
 function editarRegistro(id, obj){
     console.log(id, obj)
     fetch(`/atualizarFuncionario/${id}`,{
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },

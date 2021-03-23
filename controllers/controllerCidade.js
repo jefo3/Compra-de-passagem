@@ -39,6 +39,7 @@ module.exports = {
             response.redirect('/cidade')
         }).catch(err=>{
             console.log(err)
+            response.send(err)
         })
     },
 
@@ -52,6 +53,7 @@ module.exports = {
             response.send("REMOVIDO COM SUCESSO")
         ).catch(err => {
             console.log(err)
+            response.send(err)
         })
     },
 }

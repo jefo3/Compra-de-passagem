@@ -20,7 +20,7 @@ module.exports = {
             
         //chamar querry q vai criar as poltronas vai chamar a function
         //do banco que recebe o id do onibus e a capacidade
-        const queryCriaPoltrona = `SELECT cria_poltrona(idOnibus, vazia, capacidade) FROM ${nomeTabela} WHERE idOnibus = (SELECT MAX(idOnibus) FROM ${nomeTabela});`
+        const queryCriaPoltrona = `SELECT cria_poltrona(idOnibus, capacidade) FROM ${nomeTabela} WHERE idOnibus = (SELECT MAX(idOnibus) FROM ${nomeTabela});`
     
         await connection.query(queryCriaPoltrona)
             .then(res => {
@@ -32,11 +32,8 @@ module.exports = {
                 console.log(err);
             });
             
-            //response.send("onibus criado")
-            response.render('onibus', {
-                style: 'crud.css',
-                script: ['onibus.js', 'script.js']
-            })
+           
+           response.redirect('/onibus')
     
     },
 
@@ -60,7 +57,7 @@ module.exports = {
                 
             })
             .catch(err => {
-                console.log(err);
+                console.log(err)   
             });
             
     },
@@ -73,18 +70,46 @@ module.exports = {
         const queryPoltrona  = `DELETE FROM ${nomeTabelaPoltrona} WHERE idOnibus = ${id}`
         const query  = `DELETE FROM ${nomeTabela} WHERE idOnibus = ${id}`
 
-        await connection.query(queryPoltrona).then(
-            response.send(" POLTRONA REMOVIDO COM SUCESSO")
-        ).catch(err => {
-            console.log(err)
-        })
+        let podeDeletar = false
+        //primeiro ver se o onibus esta em alguma rota
+        await connection.query(`SELECT * FROM Rota WHERE idOnibus = ${id}`)
+                .then(res => {
+                    const rows = res.rows;
+                   
+                    if(rows.length != 0){
+                        podeDeletar = false
+                    }else{
+                        podeDeletar = true
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
 
-        await connection.query(query).then(
-            response.send("ONIBUS REMOVIDO COM SUCESSO")
-        ).catch(err => {
-            console.log(err)
-        })
+
+
+        if(podeDeletar){
+
+            await connection.query(queryPoltrona).then(res => {
+                console.log("POLTRONA REMOVIDO COM SUCESSO")
+
+                //response.status(200).send(" POLTRONA REMOVIDO COM SUCESSO")
+            }).catch(err => {
+                console.log(err)   
+            })
+            
+            await connection.query(query).then(r => {
+                console.log("ONIBUS REMOVIDO COM SUCESSO")
+                // response.status(200).send("ONIBUS REMOVIDO COM SUCESSO")
+            }).catch(err => {
+                console.log(err) 
+            })
+           
         
+        }else{
+            console.log("não pode remover porque esse onibus esta cadastrado em alguma rota")
+        }
+       
+               
     }
 
 }
