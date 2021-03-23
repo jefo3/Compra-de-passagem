@@ -20,11 +20,11 @@
         <div class="form-group">
             <input class="form-control" name="tempoViagem" type="text" placeholder="Tempo de viagem" autocomplete="off"
                 maxlength="40">
-            <input class="form-control" name="dataHoraViagem" type="text" placeholder="Horário da Viagem" autocomplete="off"
+            <input class="form-control" name="dataHoraViagem" type="text" placeholder="Data e Hora da Viagem" autocomplete="off"
                 maxlength="40">
-            <input class="form-control" name="origem" type="text" placeholder="Origem" autocomplete="off"
+            <input class="form-control" name="origem" type="text" placeholder="Id da cidade de Origem" autocomplete="off"
                 maxlength="40">
-                <input class="form-control" name="destino" type="text" placeholder="Destino" autocomplete="off"
+                <input class="form-control" name="destino" type="text" placeholder="Id da cidade Destino" autocomplete="off"
                 maxlength="40">
             <input class="form-control" name="idOnibus" placeholder="ID do Bus" type="text" autocomplete="off">
 
@@ -59,7 +59,7 @@
                     <thead>
                         <tr>
                             <th>Tempo de viagem</th>
-                            <th>Horário da viagem</th>
+                            <th>Data e Hora da viagem</th>
                             <th>Origem</th>
                             <th>Destino</th>
                             <th>Onibus</th>
@@ -75,10 +75,10 @@
                             <td class="rowData" contenteditable="false">{{destino}}</td>
                             <td class="rowData" contenteditable="false">{{idonibus}}</td>
                             <td id="actions">
-                                {{!-- <a class="add" title="Add" data-toggle="tooltip"><i
+                                <a class="add" title="Add" data-toggle="tooltip"><i
                                         class="material-icons">&#xE03B;</i></a>
                                 <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                        class="material-icons">&#xE254;</i></a> --}}
+                                        class="material-icons">&#xE254;</i></a>
                                 <a class="delete" title="Delete" data-toggle="tooltip"><i
                                         class="material-icons">&#xE872;</i></a>
                             </td>
