@@ -7,7 +7,7 @@
         </li>
         <div class="container-logout">
             <li class="nav-item">
-                <a href="/onibus" class="nav-link btn btn-dark">Voltar</a>
+                <a href="/rota" class="nav-link btn btn-dark">Voltar</a>
             </li>   
         </div>
     </ul>
@@ -17,8 +17,7 @@
     <form class="form-inline" action="/buscarRota" method="POST">
         <div class="form-group">
             <select class="form-control selectBusca" name="tipoBusca">
-                <option value="origem">ID Cidade de Origem</option>
-                <option value="destino">ID Cidade de Destino</option>
+                <option value="cidade">ID Cidade</option>
             </select>
             <input class="form-control" name="valorBusca" type="text" step="0.01" autocomplete="off">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -33,12 +32,14 @@
                 <div class="card-header">
                     <h3 class="card-title">Tabela Onibus</h3>
                 </div>
-                <table class="table">
+                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Capacidade</th>
-                            <th>Tipo</th>
+                            <th>Tempo de viagem</th>
+                            <th>Data e Hora da viagem</th>
+                            <th>Origem</th>
+                            <th>Destino</th>
+                            <th>Onibus</th>
                             <th>Ação</th>
                         </tr>
                     </thead>

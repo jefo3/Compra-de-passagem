@@ -4,6 +4,32 @@ const nomeTabela = 'Rota'
 
 module.exports = {
     
+    async buscar(request, response){
+
+        const {valorBusca} = request.body
+        
+        const query = `SELECT idRota, tempoViagem, TO_CHAR(dataHoraViagem, 'YYYY-MM-DD HH24:MI:SS') AS dataHoraViagem, idOnibus, origem, destino FROM  ${nomeTabela} WHERE origem = ${valorBusca} OR destino = ${valorBusca};`
+    
+        await connection.query(query)
+            .then(res => {
+                const rows = res.rows;
+    
+                rows.map(row => {
+                    console.log(`Read: ${JSON.stringify(row)}`);
+                });
+                //response.send(JSON.stringify(rows))
+                response.render('rotasResultadoBusca', {
+                    style: 'crud.css',
+                    script: ['rotas.js', 'script.js'],
+                    rows
+                })
+                
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    },
+
     async addRota(request, response){
         
         const { tempoViagem, dataHoraViagem, idOnibus, origem, destino } = request.body

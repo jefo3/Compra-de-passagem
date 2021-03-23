@@ -45,6 +45,7 @@ app.delete("/delFuncionario/:id", controllerFuncionario.deletaFuncionario)
 //rota
 app.get("/rota", controllerRota.exibirRotas)
 app.post("/addRota", controllerRota.addRota)
+app.post("/buscarRota", controllerRota.buscar)
 app.put("/atualizarRota/:id", controllerRota.atualizaRota)
 app.delete("/delRota/:id", controllerRota.deletaRota)
 
