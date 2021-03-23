@@ -7,18 +7,18 @@
         </li>
         <div class="container-logout">
             <li class="nav-item">
-                <a href="/funcionario" class="nav-link btn btn-dark">Voltar</a>
+                <a href="/onibus" class="nav-link btn btn-dark">Voltar</a>
             </li>   
         </div>
     </ul>
 </header>
 
 <div class="menu-buscar container">
-    <form class="form-inline" action="/buscarFuncionario" method="POST">
+    <form class="form-inline" action="/buscarOnibus" method="POST">
         <div class="form-group">
             <select class="form-control selectBusca" name="tipoBusca">
-                <option value="cpf">CPF</option>
-                <option value="nome">Nome</option>
+                <option value="origem">Cidade de Origem</option>
+                <option value="destino">Cidade de Destino</option>
             </select>
             <input class="form-control" name="valorBusca" type="text" step="0.01" autocomplete="off">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -31,34 +31,28 @@
         <div class="container">
             <div class="card tabela">
                 <div class="card-header">
-                    <h3 class="card-title">Tabela Funcionarios</h3>
+                    <h3 class="card-title">Tabela Onibus</h3>
                 </div>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>CPF</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Data de Nascimento</th>
-                            <th>Login</th>
-                            <th>Senha</th>
+                            <th>ID</th>
+                            <th>Capacidade</th>
+                            <th>Tipo</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         {{#each rows}}
-                        <tr identificador={{cpf}}>
-                            <td class="rowData" contenteditable="false">{{cpf}}</td>
-                            <td class="rowData" contenteditable="false">{{nome}}</td>
-                            <td class="rowData" contenteditable="false">{{email}}</td>
-                            <td class="rowData" contenteditable="false">{{datanasc}}</td>
-                            <td class="rowData" contenteditable="false">{{login}}</td>
-                            <td class="rowData" contenteditable="false">{{senha}}</td>
+                        <tr identificador={{idonibus}}>
+                            <td class="rowData" contenteditable="false">{{idonibus}}</td>
+                            <td class="rowData" contenteditable="false">{{capacidade}}</td>
+                            <td class="rowData" contenteditable="false">{{tipo}}</td>
                             <td id="actions">
-                                <a class="add" title="Add" data-toggle="tooltip"><i
+                                {{!-- <a class="add" title="Add" data-toggle="tooltip"><i
                                         class="material-icons">&#xE03B;</i></a>
                                 <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                        class="material-icons">&#xE254;</i></a>
+                                        class="material-icons">&#xE254;</i></a> --}}
                                 <a class="delete" title="Delete" data-toggle="tooltip"><i
                                         class="material-icons">&#xE872;</i></a>
                             </td>

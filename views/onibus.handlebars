@@ -29,11 +29,11 @@
 </div>
 
 <div class="menu-buscar container">
-    <form class="form-inline" action="/buscar" method="POST">
+    <form class="form-inline" action="/buscarOnibus" method="POST">
         <div class="form-group">
             <select class="form-control selectBusca" name="tipoBusca">
-                <option value="descricao">Capacidade</option>
-                <option value="valor">Tipo</option>
+                <option value="origem">Cidade de Origem</option>
+                <option value="destino">Cidade de Destino</option>
             </select>
             <input class="form-control inputBusca" name="valorBusca" type="text" step="0.01" autocomplete="off">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
