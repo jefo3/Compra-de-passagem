@@ -2,10 +2,6 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
-.menu-insercao *, .menu-buscar *{
-    margin: 0 5px;
-}
-
 .container{
     width: 100%;
     margin: 10px 10px;
