@@ -8,7 +8,7 @@ module.exports = {
 
         const {valorBusca} = request.body
         
-        const query = `SELECT * FROM ${nomeTabela} WHERE origem = ${valorBusca} OR destino = ${valorBusca};`
+        const query = `SELECT * FROM  ${nomeTabela} WHERE tipo = '${valorBusca}';`
     
         await connection.query(query)
             .then(res => {
@@ -20,7 +20,7 @@ module.exports = {
                 //response.send(JSON.stringify(rows))
                 response.render('onibusResultadoBusca', {
                     style: 'crud.css',
-                    script: ['cidade.js', 'script.js'],
+                    script: ['onibus.js', 'script.js'],
                     rows
                 })
                 

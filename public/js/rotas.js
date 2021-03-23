@@ -53,6 +53,20 @@ function editarRegistro(id, obj){
     });
 }
 
+// Buscar
+
+const selectBusca = document.querySelector('.selectBusca')
+const inputBusca = document.querySelector('.inputBusca')
+
+selectBusca.onclick = function(e){
+    if(selectBusca.value == "origem"){
+        inputBusca.setAttribute('type', 'text')
+    } else if(selectBusca.value == "destino"){
+        inputBusca.setAttribute('type', 'text')
+    } 
+}
+
+
 // Deletar
 deleteBtn.forEach((del)=>{
     del.onclick = function(e){
