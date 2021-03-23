@@ -5,42 +5,26 @@
                 <h3>Sistema de Passagens de Ônibus</h3>
             </a>
         </li>
-        <div class="container-voltar">
+        <div class="container-logout">
             <li class="nav-item">
-                <a href="/" class="nav-link btn btn-danger">Voltar</a>
-            </li>
+                <a href="/dashboard" class="nav-link btn btn-dark">Voltar</a>
+            </li>   
         </div>
     </ul>
 </header>
-
-
-
-<div class="menu-insercao container">
-    <form class="form-inline" action="/addCidade" method="POST">
-        <div class="form-group">
-            <input class="form-control" name="nome" type="text" placeholder="Cidade" autocomplete="off"
-                maxlength="40">
-            <input class="form-control" name="estado" type="text" placeholder="Estado" autocomplete="off"
-                maxlength="40">
-        </div>
-        <button class="btn btn-primary" type="submit">Adicionar</button>
-    </form>
-</div>
 
 <div class="menu-buscar container">
     <form class="form-inline" action="/buscarCidade" method="POST">
         <div class="form-group">
             <select class="form-control selectBusca" name="tipoBusca">
                 <option value="nome">Cidade</option>
-                <option value="cidade">Estado</option>
+                <option value="estado">Estado</option>
             </select>
-            <input class="form-control inputBusca" name="valorBusca" type="text" step="0.01" autocomplete="off">
+            <input class="form-control" name="valorBusca" type="text" step="0.01" autocomplete="off">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </div>
     </form>
 </div>
-
-
 
 <div class="tab-content container" id="nav-tabContent">
     <div class="tab-pane fade show active container" id="nav-items" role="tabpanel" aria-labelledby="nav-items-tab">
