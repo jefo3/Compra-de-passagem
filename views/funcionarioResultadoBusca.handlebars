@@ -17,8 +17,8 @@
     <form class="form-inline" action="/buscarCidade" method="POST">
         <div class="form-group">
             <select class="form-control selectBusca" name="tipoBusca">
-                <option value="nome">Cidade</option>
-                <option value="estado">Estado</option>
+                <option value="cpf">CPF</option>
+                <option value="nome">Nome</option>
             </select>
             <input class="form-control" name="valorBusca" type="text" step="0.01" autocomplete="off">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -31,21 +31,29 @@
         <div class="container">
             <div class="card tabela">
                 <div class="card-header">
-                    <h3 class="card-title">Tabela Cidades</h3>
+                    <h3 class="card-title">Tabela Funcionarios</h3>
                 </div>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Cidade</th>
-                            <th>Estado</th>
+                            <th>CPF</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Data de Nascimento</th>
+                            <th>Login</th>
+                            <th>Senha</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         {{#each rows}}
-                        <tr identificador={{idcidade}}>
+                        <tr identificador={{cpf}}>
+                            <td class="rowData" contenteditable="false">{{cpf}}</td>
                             <td class="rowData" contenteditable="false">{{nome}}</td>
-                            <td class="rowData" contenteditable="false">{{estado}}</td>
+                            <td class="rowData" contenteditable="false">{{email}}</td>
+                            <td class="rowData" contenteditable="false">{{datanasc}}</td>
+                            <td class="rowData" contenteditable="false">{{login}}</td>
+                            <td class="rowData" contenteditable="false">{{senha}}</td>
                             <td id="actions">
                                 <a class="add" title="Add" data-toggle="tooltip"><i
                                         class="material-icons">&#xE03B;</i></a>
