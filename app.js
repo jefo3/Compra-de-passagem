@@ -32,12 +32,13 @@ app.use(express.json())
 //onibus
 app.get("/onibus", controllerOnibus.exibirOnibus)
 app.post("/addOnibus", controllerOnibus.addOnibus)
-app.post("/buscarOnibus")
+app.post("/buscarOnibus", controllerOnibus.buscar)
 app.delete("/delOnibus/:id", controllerOnibus.deletaOnibus)
 
 //funcionario 
 app.get("/funcionario", controllerFuncionario.exibirFuncionario)
 app.post("/addFuncionario", controllerFuncionario.addFuncionario)
+app.post("/buscarFuncionario", controllerFuncionario.buscar)
 app.put("/atualizarFuncionario/:id", controllerFuncionario.atualizaFuncionario)
 app.delete("/delFuncionario/:id", controllerFuncionario.deletaFuncionario)
 
@@ -50,6 +51,7 @@ app.delete("/delRota/:id", controllerRota.deletaRota)
 //cidade
 app.get("/cidade", controllerCidade.exibirCidade)
 app.post("/buscarCidade", controllerCidade.buscar)
+app.post("/buscarOnibus", controllerCidade.buscar)
 app.post("/addCidade", controllerCidade.addCidade)
 app.delete("/delCidade/:id", controllerCidade.deletaCidade)
 

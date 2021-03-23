@@ -18,7 +18,7 @@ module.exports = {
                     console.log(`Read: ${JSON.stringify(row)}`);
                 });
                 //response.send(JSON.stringify(rows))
-                response.render('telaResultadoBusca', {
+                response.render('cidadeResultadoBusca', {
                     style: 'crud.css',
                     script: ['cidade.js', 'script.js'],
                     rows

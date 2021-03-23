@@ -4,6 +4,32 @@ const nomeTabela = 'Funcionario'
 
 module.exports = {
 
+    async buscar(request, response){
+
+        const {valorBusca} = request.body
+        
+        const query = `SELECT cpf, nome, email, TO_CHAR(dataNasc, 'YYYY-MM-DD') AS dataNasc, login, senha FROM ${nomeTabela} WHERE nome = '${valorBusca}';`
+    
+        await connection.query(query)
+            .then(res => {
+                const rows = res.rows;
+    
+                rows.map(row => {
+                    console.log(`Read: ${JSON.stringify(row)}`);
+                });
+                //response.send(JSON.stringify(rows))
+                response.render('funcionarioResultadoBusca', {
+                    style: 'crud.css',
+                    script: ['funcionario.js', 'script.js'],
+                    rows
+                })
+                
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    },
+
     async exibirFuncionario(request, response){
         const query = `SELECT cpf, nome, email, TO_CHAR(dataNasc, 'YYYY-MM-DD') AS dataNasc, login, senha FROM ${nomeTabela};`
     

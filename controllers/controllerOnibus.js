@@ -4,6 +4,32 @@ const nomeTabela = 'Onibus'
 
 module.exports = {
 
+    async buscar(request, response){
+
+        const {valorBusca} = request.body
+        
+        const query = `SELECT * FROM ${nomeTabela} WHERE origem = ${valorBusca} OR destino = ${valorBusca};`
+    
+        await connection.query(query)
+            .then(res => {
+                const rows = res.rows;
+    
+                rows.map(row => {
+                    console.log(`Read: ${JSON.stringify(row)}`);
+                });
+                //response.send(JSON.stringify(rows))
+                response.render('onibusResultadoBusca', {
+                    style: 'crud.css',
+                    script: ['cidade.js', 'script.js'],
+                    rows
+                })
+                
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    },
+
     async addOnibus(request, response){
 
         const {capacidade, tipo} = await request.body;

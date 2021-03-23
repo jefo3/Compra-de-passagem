@@ -66,7 +66,7 @@ const inputBusca = document.querySelector('.inputBusca')
 
 selectBusca.onclick = function(e){
     if(selectBusca.value == "cpf"){
-        inputBusca.setAttribute('type', 'text')
+        inputBusca.setAttribute('type', 'number')
     } else if(selectBusca.value == "nome"){
         inputBusca.setAttribute('type', 'text')
     } 
