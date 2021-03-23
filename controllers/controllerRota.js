@@ -14,7 +14,8 @@ module.exports = {
         await connection.query(query)
             .then(res => {
         
-                response.send("Rota cadastrada")
+                //response.send("Rota cadastrada")
+                response.redirect('/rota')
                 
             })
             .catch(err => {

@@ -14,11 +14,11 @@
 </header>
 
 <div class="menu-buscar container">
-    <form class="form-inline" action="/buscarOnibus" method="POST">
+    <form class="form-inline" action="/buscarRota" method="POST">
         <div class="form-group">
             <select class="form-control selectBusca" name="tipoBusca">
-                <option value="origem">Cidade de Origem</option>
-                <option value="destino">Cidade de Destino</option>
+                <option value="origem">ID Cidade de Origem</option>
+                <option value="destino">ID Cidade de Destino</option>
             </select>
             <input class="form-control" name="valorBusca" type="text" step="0.01" autocomplete="off">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -44,15 +44,17 @@
                     </thead>
                     <tbody>
                         {{#each rows}}
-                        <tr identificador={{idonibus}}>
+                        <tr identificador={{idrota}}>
+                            <td class="rowData" contenteditable="false">{{tempoviagem}}</td>
+                            <td class="rowData" contenteditable="false">{{datahoraviagem}}</td>
+                            <td class="rowData" contenteditable="false">{{origem}}</td>
+                            <td class="rowData" contenteditable="false">{{destino}}</td>
                             <td class="rowData" contenteditable="false">{{idonibus}}</td>
-                            <td class="rowData" contenteditable="false">{{capacidade}}</td>
-                            <td class="rowData" contenteditable="false">{{tipo}}</td>
                             <td id="actions">
-                                {{!-- <a class="add" title="Add" data-toggle="tooltip"><i
+                                <a class="add" title="Add" data-toggle="tooltip"><i
                                         class="material-icons">&#xE03B;</i></a>
                                 <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                        class="material-icons">&#xE254;</i></a> --}}
+                                        class="material-icons">&#xE254;</i></a>
                                 <a class="delete" title="Delete" data-toggle="tooltip"><i
                                         class="material-icons">&#xE872;</i></a>
                             </td>

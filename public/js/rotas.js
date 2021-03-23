@@ -1,3 +1,8 @@
+const registros = document.querySelectorAll('.tables tr')
+const deleteBtn = document.querySelectorAll('.delete')
+const editBtn = document.querySelectorAll('.edit')
+const addBtn = document.querySelectorAll('.add')
+
 // Editar
 editBtn.forEach((edit)=>{
     edit.onclick = function(e){
@@ -60,9 +65,9 @@ const inputBusca = document.querySelector('.inputBusca')
 
 selectBusca.onclick = function(e){
     if(selectBusca.value == "origem"){
-        inputBusca.setAttribute('type', 'text')
+        inputBusca.setAttribute('type', 'number')
     } else if(selectBusca.value == "destino"){
-        inputBusca.setAttribute('type', 'text')
+        inputBusca.setAttribute('type', 'number')
     } 
 }
 
