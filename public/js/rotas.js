@@ -26,11 +26,11 @@ editBtn.forEach((edit)=>{
 
             // Pegando os valores das linhas
             const obj = {
-                tempoviagem: trChilds[0].innerHTML,
-                datahoraviagem: trChilds[1].innerHTML,
+                tempoViagem: trChilds[0].innerHTML,
+                dataHoraViagem: trChilds[1].innerHTML,
                 origem: trChilds[2].innerHTML,
                 destino: trChilds[3].innerHTML,
-                idonibus: trChilds[4].innerHTML
+                idOnibus: trChilds[4].innerHTML
             }
 
             editarRegistro(id, obj)
