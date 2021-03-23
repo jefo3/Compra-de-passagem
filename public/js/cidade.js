@@ -54,7 +54,7 @@ selectBusca.onclick = function(e){
     if(selectBusca.value == "nome"){
         inputBusca.setAttribute('type', 'text')
     } else if(selectBusca.value == "estado"){
-        inputBusca.setAttribute('type', 'number')
+        inputBusca.setAttribute('type', 'text')
     } 
 }
 
