@@ -6,9 +6,9 @@ module.exports = {
 
     async buscar(request, response){
 
-        const {nome, estado} = request.body
+        const {valorBusca} = request.body
         
-        const query = `SELECT * FROM ${nomeTabela} WHERE nome = ${nome} OR estado = ${estado};`
+        const query = `SELECT * FROM ${nomeTabela} WHERE nome = '${valorBusca}' OR estado = '${valorBusca}';`
     
         await connection.query(query)
             .then(res => {
