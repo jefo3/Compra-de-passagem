@@ -32,7 +32,7 @@ app.use(express.json())
 //onibus
 app.get("/onibus", controllerOnibus.exibirOnibus)
 app.post("/addOnibus", controllerOnibus.addOnibus)
-app.post("/buscarOnibus", controllerOnibus)
+app.post("/buscarOnibus")
 app.delete("/delOnibus/:id", controllerOnibus.deletaOnibus)
 
 //funcionario 
